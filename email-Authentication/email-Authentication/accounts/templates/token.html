@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{%block content %}
+
+<div class="global-container">
+	<div class="card login-form">
+	<div class="card-body">
+		
+		<div class="card-text">
+			
+			<h3 class="card-title text-center">We have sent an email to you</h3>
+            <div class="card-text text-center">
+                 check your Email And enter OTP to Verify your account!
+				<form method ="post" action={% url 'success' %}>
+					{% csrf_token %}
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1">Enter OTP</label>
+						<input type="text" name ="code" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
+					{% if messages %}
+                
+                        {% for message in messages %}
+                        <div class="alert alert-info">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                  
+        {% endif %}
+				</form>
+        </div>
+	</divv>
+</div>
+</div>
+
+{% endblock %}
